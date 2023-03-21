@@ -8,8 +8,13 @@ const fetchCountriesInput = document.querySelector('input#search-box');
 
 fetchCountriesInput.addEventListener(
   'input',
-  _.debounce(event => {
-    fetchCountries(event.target.value.trim())
+  debounce(event => {
+    const inputText = event.target.value.trim();
+    if (fetchCountriesInput === '') {
+      clearResults();
+      return;
+    }
+    fetchCountries(inputText)
       .then(data => {
         console.log(data);
       })
