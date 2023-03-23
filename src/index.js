@@ -25,10 +25,14 @@ fetchCountriesInput.addEventListener(
         }
         if (data.length < MAX_COUNTRIES || data.length > 2) {
           const countryList = document.querySelector('.country-list');
-          const name = data[0].name.official;
-          const flag = data[0].flags.svg;
-          const textContent = name + ' ' + flag;
-          countryList.textContent = textContent;
+          data.forEach(country => {
+            const li = document.createElement('li');
+            const name = data[0].name.official;
+            const flag = data[0].flags.svg;
+            const textContent = name + ' ' + flag;
+            li.textContent = textContent;
+            countryList.appendChild(li);
+          });
         }
 
         console.log(data);
