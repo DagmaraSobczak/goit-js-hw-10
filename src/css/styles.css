@@ -22,3 +22,8 @@ body {
 .country-list li {
   list-style-type: none;
 }
+
+img {
+  width: 1rem;
+  height: auto;
+}
