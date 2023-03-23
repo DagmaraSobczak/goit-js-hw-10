@@ -11,7 +11,7 @@ fetchCountriesInput.addEventListener(
   'input',
   debounce(event => {
     const inputText = event.target.value.trim();
-    if (fetchCountriesInput === '') {
+    if (inputText === '') {
       clearResults();
       return;
     }
@@ -23,6 +23,14 @@ fetchCountriesInput.addEventListener(
           );
           return;
         }
+        if (data.length < MAX_COUNTRIES || data.length > 2) {
+          const countryList = document.querySelector('.country-list');
+          const name = data[0].name.official;
+          const flag = data[0].flags.svg;
+          const textContent = name + ' ' + flag;
+          countryList.textContent = textContent;
+        }
+
         console.log(data);
       })
       .catch(error => {
