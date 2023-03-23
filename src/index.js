@@ -27,10 +27,10 @@ fetchCountriesInput.addEventListener(
           const countryList = document.querySelector('.country-list');
           data.forEach(country => {
             const li = document.createElement('li');
-            const name = data[0].name.official;
-            const flag = data[0].flags.svg;
-            const textContent = name + ' ' + flag;
-            li.textContent = textContent;
+            const name = country.name.official;
+            const flag = country.flags.svg;
+            const textContent = `<img src="${flag}" alt="${name}" /> ${name}`;
+            li.innerHTML = textContent;
             countryList.appendChild(li);
           });
         }
