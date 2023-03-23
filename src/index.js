@@ -4,6 +4,7 @@ import Notiflix from 'notiflix';
 import { fetchCountries } from './fetchCountries';
 
 const DEBOUNCE_DELAY = 300;
+const MAX_COUNTRIES = 10;
 const fetchCountriesInput = document.querySelector('input#search-box');
 
 fetchCountriesInput.addEventListener(
@@ -16,6 +17,12 @@ fetchCountriesInput.addEventListener(
     }
     fetchCountries(inputText)
       .then(data => {
+        if (data.length > MAX_COUNTRIES) {
+          Notiflix.Notify.warning(
+            'Too many matches found. Please enter a more specific name.'
+          );
+          return;
+        }
         console.log(data);
       })
       .catch(error => {
