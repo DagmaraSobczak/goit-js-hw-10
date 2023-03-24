@@ -23,6 +23,11 @@ fetchCountriesInput.addEventListener(
           );
           return;
         }
+
+        function clearCountries() {
+          const countryList = document.querySelector('.country-list');
+          countryList.innerHTML = '';
+        }
         if (data.length < MAX_COUNTRIES || data.length > 2) {
           const countryList = document.querySelector('.country-list');
           data.forEach(country => {
