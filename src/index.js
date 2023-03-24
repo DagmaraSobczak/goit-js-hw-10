@@ -34,7 +34,21 @@ fetchCountriesInput.addEventListener(
             countryList.appendChild(li);
           });
         }
-
+        if (data.length === 1) {
+          const countryList = document.querySelector('.country-list');
+          const country = data[0];
+          const li = document.createElement('li');
+          const name = country.name.official;
+          const flag = country.flags.svg;
+          const capital = country.capital;
+          const population = country.population;
+          const languages = country.languages;
+          const textContent = `<img src="${flag}" alt="${name}" /> <b>${name}</b>  <br> <b>Capital:</b> ${capital} <br> <b>Population:</b> ${population} <br> <b>Laungueges:</b> ${Object.values(
+            country.languages
+          )}`;
+          li.innerHTML = textContent;
+          countryList.appendChild(li);
+        }
         console.log(data);
       })
       .catch(error => {
