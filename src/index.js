@@ -18,7 +18,7 @@ fetchCountriesInput.addEventListener(
     fetchCountries(inputText)
       .then(data => {
         if (data.length > MAX_COUNTRIES) {
-          Notiflix.Notify.warning(
+          Notiflix.Notify.info(
             'Too many matches found. Please enter a more specific name.'
           );
           return;
@@ -52,7 +52,11 @@ fetchCountriesInput.addEventListener(
         console.log(data);
       })
       .catch(error => {
+        if (error.status === 404) {
+          return;
+        }
         console.error(error);
+        Notiflix.Notify.failure('Oops, there is no country with that name');
       });
   }, DEBOUNCE_DELAY)
 );
