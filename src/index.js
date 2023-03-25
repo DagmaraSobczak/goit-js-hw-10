@@ -28,7 +28,7 @@ fetchCountriesInput.addEventListener(
           const countryList = document.querySelector('.country-list');
           countryList.innerHTML = '';
         }
-        if (data.length < MAX_COUNTRIES || data.length > 2) {
+        if (data.length < MAX_COUNTRIES && data.length > 2) {
           const countryList = document.querySelector('.country-list');
           data.forEach(country => {
             const li = document.createElement('li');
