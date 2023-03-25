@@ -7,12 +7,16 @@ const DEBOUNCE_DELAY = 300;
 const MAX_COUNTRIES = 10;
 const fetchCountriesInput = document.querySelector('input#search-box');
 
+function clearCountries() {
+  const countryList = document.querySelector('.country-list');
+  countryList.innerHTML = '';
+}
 fetchCountriesInput.addEventListener(
   'input',
   debounce(event => {
     const inputText = event.target.value.trim();
     if (inputText === '') {
-      clearResults();
+      clearCountries();
       return;
     }
     fetchCountries(inputText)
@@ -24,10 +28,6 @@ fetchCountriesInput.addEventListener(
           return;
         }
 
-        function clearCountries() {
-          const countryList = document.querySelector('.country-list');
-          countryList.innerHTML = '';
-        }
         if (data.length < MAX_COUNTRIES && data.length > 2) {
           const countryList = document.querySelector('.country-list');
           data.forEach(country => {
