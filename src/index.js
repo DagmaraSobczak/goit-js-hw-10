@@ -14,9 +14,9 @@ function clearCountries() {
 fetchCountriesInput.addEventListener(
   'input',
   debounce(event => {
+    clearCountries();
     const inputText = event.target.value.trim();
     if (inputText === '') {
-      clearCountries();
       return;
     }
     fetchCountries(inputText)
